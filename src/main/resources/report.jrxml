@@ -127,16 +127,28 @@
 			<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
 		</element>
 	</pageFooter>
-	<summary height="263" splitType="Stretch">
-		<element kind="chart" chartType="pie3D" uuid="045f0dc5-2100-4e64-a2c3-54ee55164afd" x="120" y="50" width="200" height="200" evaluationTime="Report">
+	<summary height="356" splitType="Stretch">
+		<element kind="chart" chartType="pie3D" uuid="616a6936-e039-4a40-be1f-5fa7defa4a7e" x="10" y="40" width="200" height="200" evaluationTime="Report">
 			<dataset kind="pie">
 				<series>
 					<keyExpression><![CDATA[$F{subjectName}]]></keyExpression>
 					<valueExpression><![CDATA[$F{markObtained}]]></valueExpression>
-					<labelExpression><![CDATA[$F{markObtained}.toString()]]></labelExpression>
+					<labelExpression><![CDATA["" + $F{markObtained}]]></labelExpression>
 				</series>
 			</dataset>
 			<plot>
+				<itemLabel/>
+			</plot>
+		</element>
+		<element kind="chart" chartType="bar3D" uuid="4a91f476-8e54-45cb-ba50-e2e3a2d95e87" x="260" y="40" width="250" height="200" evaluationTime="Report">
+			<dataset kind="category">
+				<series>
+					<seriesExpression><![CDATA[$F{subjectName}]]></seriesExpression>
+					<categoryExpression><![CDATA[$F{subjectName}]]></categoryExpression>
+					<valueExpression><![CDATA[$F{markObtained}]]></valueExpression>
+				</series>
+			</dataset>
+			<plot categoryAxisLineColor="#000000" categoryAxisLabelColor="#000000" categoryAxisTickLabelColor="#000000" valueAxisLineColor="#000000" valueAxisLabelColor="#000000" valueAxisTickLabelColor="#000000">
 				<itemLabel/>
 			</plot>
 		</element>
