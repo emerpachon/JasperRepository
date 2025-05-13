@@ -10,44 +10,52 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Clase principal para generar un informe utilizando JasperReports.
+ * Este programa compila un archivo .jrxml, llena el informe con datos y lo exporta a un archivo PDF.
+ */
 public class FirstReport {
 
+    /**
+     * Método principal que ejecuta el proceso de generación del informe.
+     *
+     */
     public static void main(String[] args) {
 
         try {
-            System.out.println("entro al metodo");
+            // Ruta del archivo .jrxml que define el diseño del informe
             String filePath = "C:\\Users\\emersonpachon\\IdeaProjects\\FirstReport\\src\\main\\resources\\FirstReport.jrxml";
-            System.out.println("guardo la patch");
+
+            // Parámetros que se pasarán al informe
             Map<String, Object> parameters = new HashMap<String, Object>();
             parameters.put("studentName", "John");
-            System.out.println("creo parametros");
 
-            Student student1 = new Student(1L, "Raj", "Joshi", "Happy Street",
-                    "Delhi");
+            // Creación de objetos Student con datos de ejemplo
+            Student student1 = new Student(1L, "Raj", "Joshi", "Happy Street", "Delhi");
+            Student student2 = new Student(2L, "Peter", "Smith", "Any Street", "Mumbai");
 
-            Student student2 = new Student(2L, "Peter", "Smith", "Any Street",
-                    "Mumbai");
-
+            // Lista de estudiantes que se utilizará como fuente de datos
             List<Student> list = new ArrayList<Student>();
             list.add(student1);
             list.add(student2);
 
-            JRBeanCollectionDataSource dataSource =
-                    new JRBeanCollectionDataSource(list);
-            System.out.println("creo datasource");
+            // Fuente de datos basada en la lista de estudiantes
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(list);
+
+            // Compilación del archivo .jrxml en un objeto JasperReport
             JasperReport report = JasperCompileManager.compileReport(filePath);
-            System.out.println("compilo el reporte");
 
+            // Llenado del informe con los parámetros y la fuente de datos
             JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
-            System.out.println("lleno el reporte");
+            System.out.println("Llenó el reporte");
 
+            // Exportación del informe lleno a un archivo PDF
             JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\emersonpachon\\IdeaProjects\\Informes Jaspert\\FirstReport.pdf");
-            System.out.println("exporto el reporte");
-            System.out.println("Report Created...");
 
-        } catch(Exception e) {
-            System.out.println("Exception while creating report");
+            System.out.println("Reporte creado y exportado");
 
+        } catch (Exception e) {
+            // Manejo de excepciones: imprime la traza de la excepción en caso de error
             e.printStackTrace();
         }
     }
