@@ -1,11 +1,9 @@
 package org.example;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
@@ -55,6 +53,7 @@ public class CustomReport {
             parameters.put("subReport", getSubReport());
             parameters.put("subDataSource", getSubDataSource());
             parameters.put("subParameters", getSubParameters());
+            parameters.put("ejemploOcultar", "Activo");
 
             // Compilación del archivo .jrxml en un objeto JasperReport
             JasperReport report = JasperCompileManager.compileReport(filePath);

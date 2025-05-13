@@ -39,18 +39,21 @@
 	<parameter name="tableData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="subReport" class="net.sf.jasperreports.engine.JasperReport"/>
 	<parameter name="subDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
-	<parameter name="subParameters" class="java.util.Map"/>
+	<parameter name="ejemploOcultar" class="java.lang.String"/>
 	<query language="sql"><![CDATA[]]></query>
 	<field name="subjectName" class="java.lang.String"/>
 	<field name="markObtained" class="java.lang.Long"/>
 	<variable name="studentName" class="java.lang.String">
 		<expression><![CDATA[$V{studentName}]]></expression>
 	</variable>
+	<variable name="Estado" incrementType="Page" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[3]]></initialValueExpression>
+	</variable>
 	<background splitType="Stretch"/>
 	<title height="84" splitType="Stretch">
 		<element kind="frame" uuid="23de7554-1d1b-4193-8bf0-35015b127da0" mode="Opaque" x="0" y="0" width="555" height="80" backcolor="#E82825">
 			<element kind="image" uuid="8acbfef8-c157-466a-bf22-0f636dc5f55a" x="0" y="0" width="190" height="80" scaleImage="FillFrame" linkType="None" linkTarget="Self">
-				<expression><![CDATA["https://miro.medium.com/v2/resize:fit:848/1*278ccGR72lK73_1l0BuKUw.png"]]></expression>
+				<expression><![CDATA["https://alveritmos.com/wp-content/uploads/2024/04/jasper-696x470.jpg"]]></expression>
 			</element>
 			<element kind="staticText" uuid="be99ac26-7973-4261-98d0-152d6a739d86" x="270" y="20" width="100" height="30">
 				<text><![CDATA[Stundent Report]]></text>
@@ -68,8 +71,9 @@
 		</element>
 	</columnHeader>
 	<detail>
-		<band height="162" splitType="Stretch">
-			<element kind="component" uuid="a8fb551a-fc5a-40ce-8ba5-a75ad4948490" x="0" y="0" width="555" height="162">
+		<band height="185" splitType="Stretch">
+			<element kind="component" uuid="a8fb551a-fc5a-40ce-8ba5-a75ad4948490" x="0" y="0" width="555" height="185">
+				<printWhenExpression><![CDATA[$P{ejemploOcultar}.equals("Activo")]]></printWhenExpression>
 				<component kind="table">
 					<datasetRun uuid="70c8678d-4633-4b71-8215-d03548710c89" subDataset="Empty Dataset1">
 						<dataSourceExpression><![CDATA[$P{tableData}]]></dataSourceExpression>
@@ -156,7 +160,6 @@
 			</plot>
 		</element>
 		<element kind="subreport" uuid="45b3273b-a43b-4325-9820-c2faab2bec87" x="0" y="146" width="555" height="200">
-			<parametersMapExpression><![CDATA[$P{subParameters}]]></parametersMapExpression>
 			<dataSourceExpression><![CDATA[$P{subDataSource}]]></dataSourceExpression>
 			<expression><![CDATA[$P{subReport}]]></expression>
 		</element>
