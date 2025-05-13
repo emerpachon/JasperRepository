@@ -1,0 +1,144 @@
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 7.0.2-31532122640f516c6d17238ae0e41a08113d5ac0  -->
+<jasperReport name="Student" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f637803d-dda4-46bb-99eb-830249f0bec2">
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<dataset name="Empty Dataset1" uuid="6106571f-1842-42c6-bdae-bbfa933fe5ae">
+		<field name="subjectName" class="java.lang.String"/>
+		<field name="markObtained" class="java.lang.Long"/>
+		<sortField name="markObtained"/>
+		<variable name="suma" calculation="Sum" class="java.lang.Integer">
+			<expression><![CDATA[$F{markObtained}]]></expression>
+		</variable>
+	</dataset>
+	<parameter name="studentName" class="java.lang.String"/>
+	<parameter name="tableData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<query language="sql"><![CDATA[]]></query>
+	<field name="subjectName" class="java.lang.String"/>
+	<field name="markObtained" class="java.lang.Long"/>
+	<variable name="studentName" class="java.lang.String">
+		<expression><![CDATA[$V{studentName}]]></expression>
+	</variable>
+	<background splitType="Stretch"/>
+	<title height="84" splitType="Stretch">
+		<element kind="frame" uuid="23de7554-1d1b-4193-8bf0-35015b127da0" mode="Opaque" x="0" y="0" width="555" height="80" backcolor="#E82825">
+			<element kind="image" uuid="8acbfef8-c157-466a-bf22-0f636dc5f55a" x="0" y="0" width="190" height="80" scaleImage="FillFrame" linkType="None" linkTarget="Self">
+				<expression><![CDATA["https://miro.medium.com/v2/resize:fit:848/1*278ccGR72lK73_1l0BuKUw.png"]]></expression>
+			</element>
+			<element kind="staticText" uuid="be99ac26-7973-4261-98d0-152d6a739d86" x="270" y="20" width="100" height="30">
+				<text><![CDATA[Stundent Report]]></text>
+			</element>
+			<element kind="textField" uuid="29309d1a-beed-4bf4-aa00-6edaf1231627" x="430" y="30" width="90" height="40">
+				<expression><![CDATA[$P{studentName}]]></expression>
+			</element>
+		</element>
+	</title>
+	<pageHeader height="1" splitType="Stretch"/>
+	<columnHeader height="16" splitType="Stretch">
+		<element kind="line" uuid="18163ba1-49d6-43c7-8b44-150e414b2b81" x="0" y="8" width="555" height="1">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<pen lineStyle="Solid"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="162" splitType="Stretch">
+			<element kind="component" uuid="a8fb551a-fc5a-40ce-8ba5-a75ad4948490" x="0" y="0" width="555" height="162">
+				<component kind="table">
+					<datasetRun uuid="70c8678d-4633-4b71-8215-d03548710c89" subDataset="Empty Dataset1">
+						<dataSourceExpression><![CDATA[$P{tableData}]]></dataSourceExpression>
+					</datasetRun>
+					<column kind="single" uuid="92df7b7a-d0aa-46b4-8049-92365e22f730" width="100">
+						<tableHeader height="30" rowSpan="1" style="Table_TH"/>
+						<tableFooter height="30" rowSpan="1" style="Table_TH">
+							<element kind="staticText" uuid="26abcda5-d069-4bc5-8734-522fe1c518e8" x="0" y="0" width="100" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<text><![CDATA[Total Mark= ]]></text>
+							</element>
+						</tableFooter>
+						<columnHeader height="30" rowSpan="1" style="Table_CH">
+							<element kind="staticText" uuid="72da071c-1551-476d-95c1-01ff561789d1" x="0" y="0" width="100" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<text><![CDATA[Subject Name]]></text>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" rowSpan="1" style="Table_CH"/>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="a048b01c-a40c-4f7e-b9e0-7a1bbd31453a" x="0" y="0" width="100" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<expression><![CDATA[$F{subjectName}]]></expression>
+							</element>
+						</detailCell>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+					</column>
+					<column kind="single" uuid="a6da7828-45e8-44c2-86be-b8759de96b8f" width="100">
+						<tableHeader height="30" rowSpan="1" style="Table_TH"/>
+						<tableFooter height="30" rowSpan="1" style="Table_TH">
+							<element kind="textField" uuid="473d15bd-391a-405c-ad74-d74902418523" x="0" y="0" width="100" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<expression><![CDATA[$V{suma}]]></expression>
+							</element>
+						</tableFooter>
+						<columnHeader height="30" rowSpan="1" style="Table_CH">
+							<element kind="staticText" uuid="1e85a970-5c14-441a-96b2-7aabad6f7818" x="0" y="0" width="100" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<text><![CDATA[Marks Obtainded]]></text>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" rowSpan="1" style="Table_CH"/>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="55be82b6-7eef-4762-8338-7aaaf7f50897" x="0" y="0" width="100" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<expression><![CDATA[$F{markObtained}]]></expression>
+							</element>
+						</detailCell>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+					</column>
+				</component>
+				<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+				<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+				<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+				<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+			</element>
+		</band>
+	</detail>
+	<pageFooter height="58" splitType="Stretch">
+		<element kind="textField" uuid="494d80ea-b7d9-4106-b89e-83b8c6499fe0" x="360" y="20" width="100" height="30" hTextAlign="Right" vTextAlign="Middle">
+			<expression><![CDATA["Page " + $V{PAGE_NUMBER} + "of" +   " "]]></expression>
+		</element>
+		<element kind="textField" uuid="4e80c2d9-2097-4be2-9f8a-01fed4106e94" x="460" y="20" width="100" height="30" evaluationTime="Report" vTextAlign="Middle">
+			<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+		</element>
+	</pageFooter>
+	<summary height="263" splitType="Stretch">
+		<element kind="chart" chartType="pie3D" uuid="045f0dc5-2100-4e64-a2c3-54ee55164afd" x="120" y="50" width="200" height="200" evaluationTime="Report">
+			<dataset kind="pie">
+				<series>
+					<keyExpression><![CDATA[$F{subjectName}]]></keyExpression>
+					<valueExpression><![CDATA[$F{markObtained}]]></valueExpression>
+					<labelExpression><![CDATA[$F{markObtained}.toString()]]></labelExpression>
+				</series>
+			</dataset>
+			<plot>
+				<itemLabel/>
+			</plot>
+		</element>
+	</summary>
+</jasperReport>
